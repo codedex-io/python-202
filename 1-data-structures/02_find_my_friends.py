@@ -1,3 +1,6 @@
+# Find My Friends 🙋🏽‍♀️
+# Codédex
+
 # Task 1: Create Friends' Location Tuples
 friend1_location = (37.7749, -122.4194) # San Francisco
 friend2_location = (40.7128, -74.0060) # New York

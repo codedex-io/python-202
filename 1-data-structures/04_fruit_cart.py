@@ -1,3 +1,6 @@
+# Fruit Cart 🍓
+# Codédex
+
 my_fruits = {'apple', 'banana', 'kiwi'}
 friend_fruits = {'banana', 'orange', 'grape'}
 
