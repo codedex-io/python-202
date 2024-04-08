@@ -4,39 +4,36 @@
 import csv
 
 # Open the magical booklist (CSV file)
-csv_file_path = 'bestsellers.csv'
+csv_file_path = 'Bestseller - Sheet1.csv'
 
-# Task 1: Reading the Booklist
-def identify_best_selling_book(file_path):
-    best_selling_book = None
-    max_sales = 0
+best_selling_book = None
+max_sales = 0
 
-    with open(file_path, 'r') as csv_file:
-        csv_reader = csv.DictReader(csv_file)
+# Task 1: Reading the CSV file
+with open(csv_file_path, 'r') as csv_file:
+  csv_reader = csv.reader(csv_file)
+  
+  # Skip the header row
+  csv_file.readline()
+  
+  for row in csv_reader:
+    # Extract sales from the row (assuming 'sales in millions' is the fifth column)
+    current_sales = int(row[4])
+    
+    if current_sales > max_sales:
+      max_sales = current_sales
+      best_selling_book = row
 
-        for row in csv_reader:
-            sales = int(row['sales in millions'])
-            if sales > max_sales:
-                max_sales = sales
-                best_selling_book = row
+# Task 2: Creating a new file for bestseller info
+output_file_path = 'bestseller_info.csv'
+with open(output_file_path, 'w', newline='') as output_file:
+  csv_writer = csv.writer(output_file)
+  
+  # Write header
+  csv_writer.writerow(['Book', 'Author', 'Sales in Millions'])
+  
+  # Write best-selling book info
+  csv_writer.writerow([best_selling_book[0], best_selling_book[1], best_selling_book[4]])
 
-    return best_selling_book
-# Task 2: Creating a Bragging File
-def write_bestseller_info(output_file_path, best_selling_book):
-    with open(output_file_path, 'w', newline='') as output_file:
-        csv_writer = csv.writer(output_file)
-        csv_writer.writerow(['Book', 'Author', 'Sales in Millions'])
-        csv_writer.writerow([best_selling_book['Book'], best_selling_book['Author'], best_selling_book['sales in millions']])
-
-# Identify the superstar bestseller
-best_selling_book_info = identify_best_selling_book(csv_file_path)
-
-# Share the excitement!
-if best_selling_book_info:
-    print(f"The bestseller is: {best_selling_book_info['Book']} By: {best_selling_book_info['Author']}")
-    # Bonus: Write bestseller info to a new CSV file
-    output_file_path = 'bestseller_info.csv'
-    write_bestseller_info(output_file_path, best_selling_book_info)
-    print(f"Bestselling info written to {output_file_path}")
-else:
-    print("Oh no! No superstars found.")
+# Bonus: Print confirmation message
+print('Bestselling info written to', output_file_path)
