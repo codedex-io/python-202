@@ -1,16 +1,19 @@
+# Grammys 🎵
+# Codédex
+
 # Define Higher Order Function
 def translator(language):
-    # Create a dictionary for different languages
-    translations = {
-        'spanish': {'hello': 'hola', 'goodbye': 'adiós', 'thank you': 'gracias'},
-        'french': {'hello': 'bonjour', 'goodbye': 'au revoir', 'thank you': 'merci'},
-        'italian': {'hello': 'ciao', 'goodbye': 'arrivederci', 'thank you': 'grazie'}
-    }
+  # Create a dictionary for different languages
+  translations = {
+    'spanish': {'hello': 'hola', 'goodbye': 'adiós', 'thank you': 'gracias'},
+    'french': {'hello': 'bonjour', 'goodbye': 'au revoir', 'thank you': 'merci'},
+    'italian': {'hello': 'ciao', 'goodbye': 'arrivederci', 'thank you': 'grazie'}
+  }
 
-    def translate_word(word):
-        return translations[language].get(word.lower(), "Translation not available")
+  def translate_word(word):
+    return translations[language].get(word.lower(), "Translation not available")
 
-    return translate_word
+  return translate_word
 
 # Example usage:
 translate_to_spanish = translator('spanish')
