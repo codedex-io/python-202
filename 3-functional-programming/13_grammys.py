@@ -1,29 +1,30 @@
 # Grammys 🎵
 # Codédex
 
-# Define Higher Order Function
-def translator(language):
-  # Create a dictionary for different languages
-  translations = {
-    'spanish': {'hello': 'hola', 'goodbye': 'adiós', 'thank you': 'gracias'},
-    'french': {'hello': 'bonjour', 'goodbye': 'au revoir', 'thank you': 'merci'},
-    'italian': {'hello': 'ciao', 'goodbye': 'arrivederci', 'thank you': 'grazie'}
-  }
+from functools import reduce
 
-  def translate_word(word):
-    return translations[language].get(word.lower(), "Translation not available")
+# List of songs with their durations (in minutes)
+playlist = [
+    ('What Was I Made For?', 3.42),
+    ('Just Like That', 5.05),
+    ('Song 3', 6.8),
+    ('Leave The Door Open', 4.02),
+    ('I Can\'t Breath', 4.47),
+    ('Bad Guy', 3.14)
+]
 
-  return translate_word
+# Function to insert a song into a sorted list based on duration
+def sort(sorted_list, song):
+    if not sorted_list:
+        return [song]
+    else:
+        for index, item in enumerate(sorted_list):
+            if song[1] < item[1]:
+                return sorted_list[:index] + [song] + sorted_list[index:]
+        return sorted_list + [song]
 
-# Example usage:
-translate_to_spanish = translator('spanish')
-print(translate_to_spanish('hello'))  # Output: hola
+# Use reduce() to simulate sorting the playlist based on song durations
+sorted_playlist = reduce(sort, playlist, [])
 
-translate_to_french = translator('french')
-print(translate_to_french('hello'))  # Output: au revoir
-
-translate_to_italian = translator('italian')
-print(translate_to_italian('hello'))  # Output: grazie
-
-translate_to_italian = translator('italian')
-print(translate_to_italian('tonight'))  # Output: Translation not available
+# Display the sorted playlist
+print('Sorted Playlist (Ascending Order):', sorted_playlist)
