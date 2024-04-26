@@ -11,7 +11,10 @@ def translator(language):
   }
 
   def translate_word(word):
-    return translations[language].get(word.lower(), 'Translation not available')
+    if word.lower() in translations[language]:
+      return translations[language][word.lower()]
+    else:
+      return 'Translation not available'
 
   return translate_word
 

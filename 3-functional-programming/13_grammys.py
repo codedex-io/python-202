@@ -3,28 +3,27 @@
 
 from functools import reduce
 
-# List of songs with their durations (in minutes)
-playlist = [
-  ('What Was I Made For?', 3.42),
-  ('Just Like That', 5.05),
-  ('Song 3', 6.8),
-  ('Leave The Door Open', 4.02),
-  ('I Can\'t Breath', 4.47),
-  ('Bad Guy', 3.14)
-]
+playlist = [('What Was I Made For?', 3.42), ('Just Like That', 5.05), ('Song 3', 6.8), ('Leave The Door Open', 4.02), ('I Can\'t Breath', 4.47), ('Bad Guy', 3.14)]
 
-# Function to insert a song into a sorted list based on duration
-def sort(sorted_list, song):
-  if not sorted_list:
-    return [song]
-  else:
-    for index, item in enumerate(sorted_list):
-      if song[1] < item[1]:
-        return sorted_list[:index] + [song] + sorted_list[index:]
-    return sorted_list + [song]
+def longer_than_five_minutes(song):
+  return song[1] > 5.00
 
-# Use reduce() to simulate sorting the playlist based on song durations
-sorted_playlist = reduce(sort, playlist, [])
+def minutes_to_seconds(song):
+  duration = song[1]
+  minutes = int(duration)
+  seconds = (duration - minutes) * 100
 
-# Display the sorted playlist
-print('Sorted Playlist (Ascending Order):', sorted_playlist)
+  return minutes * 60 + round(seconds)
+
+def add_durations(total, song):
+  duration = song[1]
+  return total + duration
+
+filtered_songs = list(filter(longer_than_five_minutes, playlist))
+
+convert_to_seconds = list(map(minutes_to_seconds, playlist))
+
+total_playtime = reduce(add_durations, playlist, 0)
+
+print(convert_to_seconds)
+print(total_playtime)

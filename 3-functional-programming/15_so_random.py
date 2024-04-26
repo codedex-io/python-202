@@ -1,19 +1,44 @@
-# So Random 🌙
+# So Random 🧙‍♂️
 # Codédex
 
 import random
+from functools import reduce
 
-# Lists of prefixes and suffixes for fantasy names
-prefixes = ['Dark', 'Hope', 'Moon', 'Golden', 'Silver']
-suffixes = ['river', 'fire', 'storm', 'whisper', 'song']
+prefixes = ['Mystic', 'Golden', 'Dark', 'Shadow', 'Silver']
+suffixes = ['storm', 'song', 'fire', 'blade', 'whisper']
 
-# Generate fantasy names using list comprehension
-fantasy_names = [prefix + ' ' + suffix for prefix in prefixes for suffix in suffixes]
+# Mapped names
+def capitalize_suffix(name):
+  return name.capitalize()
 
-# Shuffle the generated fantasy names for randomness
-random.shuffle(fantasy_names)
+capped_suffixes = list(map(capitalize_suffix, suffixes))
 
-# Display the generated fantasy names
-print('Fantasy User Names:')
-for name in fantasy_names:
-  print(name)
+def create_username(list_1, list_2):
+  return random.choice(list_1) + ' ' + random.choice(list_2)
+
+# List comprehensions
+random_names = [
+  create_username(prefixes, capped_suffixes)
+  for name in range(10)  
+]
+
+# Filtered names
+def fire_in_username(name):
+  return 'Fire' in name
+filtered_names = list(filter(fire_in_username, random_names))
+
+# Reduced list based on filtered names
+def concatenate_names(acc, name):
+  return acc + ', ' + name
+
+reduced_names = reduce(concatenate_names, filtered_names)
+
+def display_name_info():
+  print("Fantasy Names:")
+  for name in random_names:
+    print(name)
+  print()
+  print('Filtered names with \'Fire\':', list(filtered_names))
+  print('Concatenated names:', reduced_names) 
+
+display_name_info()
