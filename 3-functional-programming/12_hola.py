@@ -23,10 +23,10 @@ translate_to_spanish = translator('spanish')
 print(translate_to_spanish('hello'))  # Output: hola
 
 translate_to_french = translator('french')
-print(translate_to_french('hello'))  # Output: au revoir
+print(translate_to_french('hello'))  # Output: bonjour
 
 translate_to_italian = translator('italian')
-print(translate_to_italian('hello'))  # Output: grazie
+print(translate_to_italian('hello'))  # Output: ciao
 
 translate_to_italian = translator('italian')
 print(translate_to_italian('tonight'))  # Output: Translation not available
