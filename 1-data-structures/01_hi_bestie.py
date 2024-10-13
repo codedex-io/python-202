@@ -1,3 +1,6 @@
+# Hi Bestie 👋
+# Codédex
+
 # Define a dictionary with slang terms and meanings
 genz_slang = {
     "bestie": "best friend or new friend",
