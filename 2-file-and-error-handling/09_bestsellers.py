@@ -10,7 +10,7 @@ best_selling_book = None
 max_sales = 0
 
 # Task 1: Reading the CSV file
-with open(csv_file_path, 'r') as csv_file:
+with open(csv_file_path, 'r', encoding='utf-8') as csv_file:
   csv_reader = csv.reader(csv_file)
   
   # Skip the header row
@@ -18,7 +18,7 @@ with open(csv_file_path, 'r') as csv_file:
   
   for row in csv_reader:
     # Extract sales from the row (assuming 'sales in millions' is the fifth column)
-    current_sales = int(row[4])
+    current_sales = float(row[4])
     
     if current_sales > max_sales:
       max_sales = current_sales
