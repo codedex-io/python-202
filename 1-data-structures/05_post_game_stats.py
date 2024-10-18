@@ -7,7 +7,7 @@ players_data = [
     {"name": "Tyreek Hill", "position": "Wide Receiver", "jersey_number": 10, "yards_gained": 150, "touchdowns": 2},
     # Add more players as needed
 ]
-names = [player["name"]for player in players_data]
+names = [player["name"] for player in players_data]
 print("Players Names:", names)
 
 # Task 2: Analyze Player Positions
