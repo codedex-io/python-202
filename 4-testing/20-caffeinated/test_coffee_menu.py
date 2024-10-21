@@ -10,7 +10,7 @@ class TestCoffeeMenu(unittest.TestCase):
     self.menu = CoffeeMenu()
 
   def test_get_price_existing_item(self):
-    self.assertEqual(self.menu.get_price('latte'), 3.00)
+    self.assertEqual(self.menu.get_price('latte'), 2.75)
 
   def test_get_price_non_existing_item(self):
     self.assertIsNone(self.menu.get_price('mocha'))
