@@ -38,7 +38,7 @@ def display_name_info():
   for name in random_names:
     print(name)
   print()
-  print('Filtered names with \'Fire\':', list(filtered_names))
+  print('Filtered names with \'Fire\':', filtered_names)
   print('Concatenated names:', reduced_names) 
 
 display_name_info()
