@@ -10,3 +10,7 @@ pyxis = {
   'medium': ['terracotta', 'white-ground'],
   'dimensions': {'height': '4.75in', 'height w/cover': '6.75in'}
 }
+
+print('Printing the dictionary: ', pyxis)
+print('\nPrinting the keys: ', pyxis.keys())
+print('\nPrinting the values: ', pyxis.values())
