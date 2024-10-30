@@ -3,17 +3,22 @@
 
 import csv
 
-data = [["Item", "Quantity"], ["Mugs", 2], ["Hangers", 30], ["Shoes", 2]]
+data = [
+  ['Item', 'Quantity'],
+  ['Mugs', 2],
+  ['Hangers', 30],
+  ['Shoes', 2]
+]
 
 try:
-    with open("packing_list.csv", "r", newline="") as file:
-        csv_reader = csv.reader(file)
+  with open('packing_list.csv', 'r') as file:
+    csv_reader = csv.reader(file)
 
-        for row in csv_reader:
-            print(row)
+    for row in csv_reader:
+      print(row)
 except FileNotFoundError:
-    print("Packing list file not found. Creating a new one.")
-    with open("packing_list.csv", "w", newline="") as file:
-        csv_writer = csv.writer(file)
+  print('Packing list file not found. Creating a new one.')
+  with open('packing_list.csv', 'w', newline='') as file:
+    csv_writer = csv.writer(file)
 
-        csv_writer.writerows(data)
+    csv_writer.writerows(data)
