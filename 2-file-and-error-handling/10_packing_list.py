@@ -18,7 +18,7 @@ try:
       print(row)
 except FileNotFoundError:
   print('Packing list file not found. Creating a new one.')
-  with open('packing_list.csv', 'w') as file:
+  with open('packing_list.csv', 'w', newline='') as file:
     csv_writer = csv.writer(file)
 
     csv_writer.writerows(data)
