@@ -10,10 +10,10 @@ def longer_than_five_minutes(song):
 
 def minutes_to_seconds(song):
   duration = song[1]
-  minutes = int(duration)
+  minutes = duration
   seconds = (duration - minutes) * 100
 
-  return minutes * 60 + round(seconds)
+  return int(minutes * 60 + round(seconds))
 
 def add_durations(total, song):
   duration = song[1]
